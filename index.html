@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Программирование на Python</title>
+  <link rel="icon" type="image/svg+xml" href="img/siteIconmain.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Верхняя информационная полоса с контактами, режимом работы и ссылкой на ВК -->
+  <div class="top-bar">
+    <div class="top-bar__info">
+      <div class="top-bar__info-sector">
+        <div class="sector-phone">
+          <img src="img/phone.svg" alt="phone">
+          <span class="number">+7 (343) 363-07-77</span>
+        </div>
+        <div class="sector-adress">
+          <img src="img/mapmarker.svg" alt="map">
+          <span class="adress">ул. Красных Командиров, 11а, г. Екатеринбург</span>
+        </div>
+        <div class="sector-time">
+          <img src="img/clock.svg" alt="clock">
+          <span class="time">Пн - СБ 08:30 - 20:00</span>
+        </div>
+        <a href="#" class="sector-VK">
+          <img src="img/wk.svg" alt="VK">
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Основная шапка сайта: логотип, навигация и кнопки действий -->
+  <header>
+    <div class="header__container container">
+      <img src="img/siteIcon.svg" alt="ITCUBE">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="#" class="nav__link">О центре</a></li>
+          <li><a href="#" class="nav__link">Новости</a></li>
+          <li><a href="#" class="nav__link nav__link--active">Программы</a></li>
+          <li><a href="#" class="nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <a href="#" class="action-btn" title="Версия для слабовидящих">
+          <img src="img/eye.svg" alt="Глаз">
+        </a>
+        <button class="search-btn" title="Поиск">
+          <img src="img/searchicon.svg" alt="Поиск">
+        </button>
+      </div>
+      <!-- Кнопка «три полосочки» для планшетов и телефонов (на десктопе скрыта) -->
+      <button class="burger-btn" type="button" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Выпадающее меню на планшетах и телефонах -->
+    <div class="mobile-menu" id="mobile-menu">
+      <ul class="mobile-menu__list">
+        <li><a href="#" class="mobile-menu__link">О центре <span>›</span></a></li>
+        <li><a href="#" class="mobile-menu__link">Новости</a></li>
+        <li><a href="#" class="mobile-menu__link mobile-menu__link--active">Программы <span>›</span></a></li>
+        <li><a href="#" class="mobile-menu__link">Контакты</a></li>
+      </ul>
+
+      <div class="mobile-menu__accessibility">
+        <a href="#" class="mobile-menu__eye" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
+          <img src="img/eye.svg" alt="Версия для слабовидящих">
+        </a>
+      </div>
+
+      <form class="mobile-menu__search" action="#" method="get">
+        <input type="search" class="mobile-menu__search-input" placeholder="Поиск..." aria-label="Поиск">
+        <button type="submit" class="mobile-menu__search-btn" aria-label="Найти">
+          <img src="img/searchicon.svg" alt="Поиск">
+        </button>
+      </form>
+    </div>
+  </header>
+  <!-- Главный экран (Hero): хлебные крошки, заголовок, описание и панель параметров курса -->
+  <section class="hero">
+    <div class="hero__container">
+      <!-- Навигационная цепочка (хлебные крошки) -->
+      <div class="breadcrumbs container">
+        <a href="#">IT КУБ</a>
+        >
+        <a href="#">Программы</a>
+        >
+        <span>Программирование на Python</span>
+      </div>
+    </div>
+    <div class="hero__content container">
+      <h1 class="hero__title">Программирование на Python</h1>
+      <p class="hero__description">
+        Освоение Python от основ до веб-разработки: алгоритмы, ООП, базы данных, API и собственные IT-проекты — за 3
+        года обучения.
+      </p>
+    </div>
+    </div>
+    <!-- Нижняя плашка с ключевыми параметрами курса и кнопкой записи -->
+    <div class="hero__bottom-bar">
+      <div class="hero__bottom-container">
+        <div class="course-info">
+          <span class="course-info__label">Возраст:</span>
+          <span class="course-info__value">12–17 лет</span>
+        </div>
+        <div class="course-info">
+          <span class="course-info__label">Длительность:</span>
+          <span class="course-info__value">432 академических часов</span>
+        </div>
+        <div class="course-info">
+          <span class="course-info__label">Группы:</span>
+          <span class="course-info__value">10–14 человек</span>
+        </div>
+        <!-- Кнопка плавно прокручивает к форме заявки (обрабатывается в main.js) -->
+        <button class="cta-button">Записаться</button>
+      </div>
+    </div>
+  </section>
+  <section class="about-course">
+    <div class="container about-course__container">
+      <div class="about-card">
+        <div class="about-card__image">
+          <img src="img/logo_new.svg" alt="Python Cube Иконка">
+        </div>
+        <div class="about-card__text">
+          <p>
+            <strong>Python</strong> — один из самых популярных и востребованных языков программирования в мире. Его
+            синтаксис прост и интуитивно понятен новичкам, поэтому он идеально подходит для первого знакомства с IT.
+            Python используется в веб-разработке, анализе данных, машинном обучении и автоматизации.
+          </p>
+          <p>
+            Программа «Программирование на Python» построена по принципу «от простого к сложному» и состоит из трех
+            модулей: стартового, базового и продвинутого. Ребята не просто изучают синтаксис, а учатся решать реальные
+            прикладные задачи и создавать собственные IT-продукты.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- Секция «Чему научится ребёнок?»: сетка карточек с ключевыми навыками -->
+  <section class="skills">
+    <div class="container">
+
+      <h2 class="section-title">Чему научится ребёнок?</h2>
+
+      <div class="skills__grid">
+        <!-- Карточка 1 -->
+        <div class="skill-card">
+          <div class="skill-card__number">1</div>
+          <p class="skill-card__text">Умение писать и отлаживать код на Python для решения различных задач.</p>
+        </div>
+
+        <!-- Карточка 2 -->
+        <div class="skill-card">
+          <div class="skill-card__number">2</div>
+          <p class="skill-card__text">Знание основ применения языка в различных областях IT.</p>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="skill-card">
+          <div class="skill-card__number">3</div>
+          <p class="skill-card__text">Умение писать эффективный и оптимизированный код.</p>
+        </div>
+
+        <!-- Карточка 4 -->
+        <div class="skill-card">
+          <div class="skill-card__number">4</div>
+          <p class="skill-card__text">Навык создания MVP (минимально жизнеспособных) проектов.</p>
+        </div>
+
+        <!-- Карточка 5 -->
+        <div class="skill-card">
+          <div class="skill-card__number">5</div>
+          <p class="skill-card__text">Разработка эффективных алгоритмов и работа со сложными структурами данных.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Секция «Программа обучения»: раскрывающийся аккордеон по годам обучения -->
+  <section class="program">
+    <div class="container">
+      <h2 class="section-title program__title">Программа обучения</h2>
+
+      <div class="accordion">
+        <!-- Уровень 1 -->
+        <div class="accordion__item">
+          <button class="accordion__header" type="button" aria-expanded="false">
+            <span class="accordion__title">Стартовый уровень (1-й год, 144 ч)</span>
+            <span class="accordion__arrow" aria-hidden="true">⌄</span>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              <p class="accordion__lead">Для новичков 12–16 лет. Свободный набор без предварительного отбора.</p>
+              <ul class="accordion__list">
+                <li>Раздел 1. Введение в программирование: инструктаж, среда разработки, переменные, типы данных,
+                  условные конструкции, строки.</li>
+                <li>Раздел 2. Базовые конструкции в Python: циклы for и while, работа со списками.</li>
+                <li>Раздел 3. Функциональное программирование: словари, множества, двумерные массивы, функции и
+                  рекурсия, работа с файлами, основы ООП.</li>
+                <li>Раздел 4. Проектная деятельность: гибкое управление проектами, разработка MVP, эффективная
+                  презентация, итоговая защита проекта.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Уровень 2 -->
+        <div class="accordion__item">
+          <button class="accordion__header" type="button" aria-expanded="false">
+            <span class="accordion__title">Базовый уровень (2-й год, 144 ч)</span>
+            <span class="accordion__arrow" aria-hidden="true">⌄</span>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              <p class="accordion__lead">Для тех, кто уже имеет первичные навыки (13–17 лет). Зачисление после
+                стартового уровня или тестирования.</p>
+              <ul class="accordion__list">
+                <li>Раздел 1. Программирование на Python: углублённое ООП, рекурсия, *args/**kwargs, модуль OS,
+                  исключения, пакеты и модули.</li>
+                <li>Раздел 2. Функциональное программирование: lambda-функции, функторы, декораторы, регулярные
+                  выражения.</li>
+                <li>Раздел 3. Графическая библиотека Tkinter: создание GUI, виджеты (Listbox, Entry, Canvas),
+                  многооконные приложения, калькулятор, ежедневник, фотоальбом.</li>
+                <li>Раздел 4. Проектная деятельность: управление проектами, разработка, презентация, защита.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Уровень 3 -->
+        <div class="accordion__item">
+          <button class="accordion__header" type="button" aria-expanded="false">
+            <span class="accordion__title">Продвинутый уровень (3-й год, 144 ч)</span>
+            <span class="accordion__arrow" aria-hidden="true">⌄</span>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              <p class="accordion__lead">Для уверенных пользователей (14–17 лет). Зачисление после базового уровня или
+                углублённого тестирования.</p>
+              <ul class="accordion__list">
+                <li>Раздел 1. SQL: методы хранения информации, CSV, системы контроля версий, SQL-запросы (SELECT,
+                  INSERT, UPDATE, DELETE), мини-проект с БД.</li>
+                <li>Раздел 2. WEB: как работает браузер, библиотека requests, JSON, API, веб-сервер Flask,
+                  шаблонизаторы, ORM, FastAPI, контейнеризация (Docker), деплой.</li>
+                <li>Раздел 3. Проектная деятельность: разработка под потребности заказчика (user stories, ТЗ,
+                  Agile/Scrum/Waterfall), процесс разработки, презентация, итоговая защита.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Секция «Преподаватели»: сетка карточек педагогов и сотрудников -->
+  <section class="teachers">
+    <div class="container">
+      <h2 class="section-title teachers__title">Преподаватели</h2>
+
+      <div class="teachers__grid">
+        <!-- Левая карточка -->
+        <article class="teacher-card teacher-card--left">
+          <div class="teacher-card__photo">
+            <img src="img/teacher-1.jpg" alt="Дюкина В.Д.">
+          </div>
+          <h3 class="teacher-card__name">Дюкина В.Д.</h3>
+          <p class="teacher-card__role">Педагог дополнительного образования</p>
+        </article>
+
+        <!-- Центральная верхняя левая -->
+        <article class="teacher-card teacher-card--top-mid-1">
+          <div class="teacher-card__photo">
+            <img src="img/teacher-2.jpg" alt="Иванов А.В.">
+          </div>
+          <h3 class="teacher-card__name">Иванов А.В.</h3>
+          <p class="teacher-card__role">Педагог дополнительного образования</p>
+        </article>
+
+        <!-- Центральная верхняя правая -->
+        <article class="teacher-card teacher-card--top-mid-2">
+          <div class="teacher-card__photo">
+            <img src="img/teacher-3.jpg" alt="Сафин К.Р.">
+          </div>
+          <h3 class="teacher-card__name">Сафин К.Р.</h3>
+          <p class="teacher-card__role">Педагог дополнительного образования</p>
+        </article>
+
+        <!-- Правая карточка -->
+        <article class="teacher-card teacher-card--right">
+          <div class="teacher-card__photo">
+            <img src="img/teacher-4.jpg" alt="Шмелев А.А.">
+          </div>
+          <h3 class="teacher-card__name">Шмелев А.А.</h3>
+          <p class="teacher-card__role">Педагог дополнительного образования</p>
+        </article>
+
+        <!-- Центральная нижняя левая -->
+        <article class="teacher-card teacher-card--bottom-mid-1">
+          <div class="teacher-card__photo">
+            <img src="img/teacher-5.jpg" alt="Кадникова Н.С.">
+          </div>
+          <h3 class="teacher-card__name">Кадникова Н.С.</h3>
+          <p class="teacher-card__role">Методист</p>
+        </article>
+
+        <!-- Центральная нижняя правая -->
+        <article class="teacher-card teacher-card--bottom-mid-2">
+          <div class="teacher-card__photo">
+            <img src="img/teacher-6.jpg" alt="Ушенин В.П.">
+          </div>
+          <h3 class="teacher-card__name">Ушенин В.П.</h3>
+          <p class="teacher-card__role">Педагог-организатор</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- Секция «Проектная работа»: тезисы о проектной деятельности в плашках -->
+  <section class="project-work">
+    <div class="container project-work__container">
+      <h2 class="section-title project-work__title">
+        Проектная работа - обязательная часть<br>
+        каждого года обучения.
+      </h2>
+
+      <p class="project-work__subtitle">РЕБЯТА:</p>
+
+      <div class="project-work__grid">
+        <!-- Широкая плашка сверху на две колонки -->
+        <div class="project-badge project-badge--full">
+          Изучают методики управления проектами (гибкие и каскадные модели);
+        </div>
+
+        <!-- Левая колонка -->
+        <div class="project-work__col">
+          <div class="project-badge">
+            Осваивают инструменты эффективной презентации
+          </div>
+          <div class="project-badge">
+            Учатся формулировать цели и задачи по технологии S.M.A.R.T.
+          </div>
+          <div class="project-badge">
+            Защищают проект перед экспертами
+          </div>
+        </div>
+
+        <!-- Правая колонка -->
+        <div class="project-work__col">
+          <div class="project-badge">
+            Разрабатывают MVP (минимально жизнеспособный продукт)
+          </div>
+          <div class="project-badge project-badge--tall">
+            На продвинутом уровне - работают с потребностями заказчика, составляют ТЗ, используют матрицу RACI и
+            диаграмму Ганта
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Секция «Форма заявки» (id="application-form" для плавной прокрутки из Hero) -->
+  <section class="application" id="application-form">
+    <div class="container">
+      <div class="application__card">
+        <div class="application__content">
+          <h2 class="application__title">
+            Оставьте заявку, и мы свяжемся с вами для подтверждения записи
+          </h2>
+
+          <form class="application__form" action="#" method="post">
+            <input class="application__input" type="text" name="name" placeholder="ФИО" required>
+            <input class="application__input" type="email" name="email" placeholder="Email" required>
+            <input class="application__input" type="tel" name="phone" placeholder="+7 123 456-78-90" required>
+            <!-- Кастомный чекбокс согласия на рекламу -->
+            <label class="custom-checkbox">
+              <input type="checkbox" name="ads_consent">
+              <span class="custom-checkbox__box"></span>
+              <span class="custom-checkbox__text">
+                Я подтверждаю <a href="#">согласие</a> на получение информации рекламного характера
+              </span>
+            </label>
+            <!-- Кастомный чекбокс согласия на обработку персональных данных -->
+            <label class="custom-checkbox">
+              <input type="checkbox" name="privacy_consent" checked required>
+              <span class="custom-checkbox__box"></span>
+              <span class="custom-checkbox__text">
+                Я ознакомлен(-а) с <a href="#">Политикой обработки персональных данных</a> и даю согласие на обработку
+                персональных данных с целью получения бесплатной консультации по программам обучения. Согласие действует
+                до достижения цели, если оно не будет отозвано раньше путем направления письменного заявления
+              </span>
+            </label>
+
+            <div class="application__actions">
+              <button class="application__btn application__btn--submit" type="submit">
+                Отправить заявку
+              </button>
+              <a class="application__btn application__btn--info" href="#">
+                Дополнительная информация
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Подвал сайта: верхний блок с контактами и меню, нижняя полоса с копирайтом -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="container footer__top-inner">
+        <!-- Левая колонка: логотип -->
+        <a class="footer__logo" href="#">
+          <img src="img/iconfooter.svg" alt="Дворец молодёжи — региональный оператор">
+        </a>
+
+        <!-- Центральная колонка: меню -->
+        <nav class="footer__nav" aria-label="Меню в подвале">
+          <h3 class="footer__heading">МЕНЮ</h3>
+          <ul class="footer__menu">
+            <li class="footer__menu-item"><a href="#">О ЦЕНТРЕ</a></li>
+            <li class="footer__menu-item"><a href="#">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></li>
+            <li class="footer__menu-item"><a href="#">ПРОГРАММЫ</a></li>
+            <li class="footer__menu-item"><a href="#">РЕКВИЗИТЫ</a></li>
+            <li class="footer__menu-item"><a href="#">УСЛОВИЯ ОПЛАТЫ</a></li>
+          </ul>
+        </nav>
+
+        <!-- Правая колонка: контакты -->
+        <div class="footer__contacts">
+          <h3 class="footer__heading">КОНТАКТНАЯ ИНФОРМАЦИЯ</h3>
+          <p class="footer__address">
+            ул. Красных Командиров, 11а,<br>
+            г. Екатеринбург, Россия
+          </p>
+          <div class="footer__links">
+            <a class="footer__phone" href="tel:+73433630777">Тел.: +7 (343) 363-07-77</a>
+            <a class="footer__email" href="mailto:itcibe66@yandex.ru">itcibe66@yandex.ru</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Нижняя полоска копирайт и ссылки -->
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <div class="footer__copyright-wrap">
+          <span class="footer__bottom-icon" aria-hidden="true">❖</span>
+          <p class="footer__copyright">
+            © 2019-2025. Все права защищены. Разработка сайта - агентство TIME CODE
+          </p>
+        </div>
+
+        <div class="footer__bottom-right">
+          <nav class="footer__bottom-nav" aria-label="Нижняя навигация">
+            <a href="#">О ЦЕНТРЕ</a>
+            <a href="#">НОВОСТИ</a>
+            <a href="#">ПРОГРАММЫ</a>
+            <a href="#">КОНТАКТЫ</a>
+          </nav>
+          <a class="footer__eye-link" href="#" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
+            <img src="img/eye.svg" alt="Версия для слабовидящих">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Фиксированная кнопка прокрутки страницы наверх -->
+  <button class="scroll-top" type="button" aria-label="Наверх" title="Наверх">
+    ↑
+  </button>
+  <!-- Скрипт с интерактивной логикой страницы -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

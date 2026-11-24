@@ -1,0 +1,1317 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* CSS-переменные (кастомные свойства): хранят основные цвета макета, чтобы легко менять их в одном месте и не дублировать HEX-коды */
+:root {
+    --color-blue: #1D71B8;
+    --color-dark-blue: #204362;
+    --color-gary: #EBEBEB;
+    --color-purple: #7C6EAF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* Убирает стандартное оформление текста (например, подчёркивание у ссылок <a>) */
+}
+
+/* Базовые шрифт, цвет текста и размер шрифта для всей страницы */
+body {
+    background-color: white;
+    font-family: "Poppins", sans-serif;
+    color: var(--color-dark-blue);
+    font-size: 18px;
+}
+
+/* Общий ограничитель ширины контента и центрирование секций по центру экрана */
+.container {
+    max-width: 1440px;
+    /* Общая ширина макета */
+    margin: 0 auto;
+    /* Центрирует блок по горизонтали */
+    padding: 0 40px;
+    /* Боковые отступы, чтобы контент не прилипал к краям */
+    box-sizing: border-box;
+    /* Включает padding в общую ширину элемента */
+}
+
+/* Верхняя синяя полоса контактов */
+.top-bar__info {
+    background: var(--color-blue);
+    color: white;
+}
+
+.top-bar__info-sector {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 5px 100px;
+    display: flex;
+    justify-content: flex-end;
+    /* Прижимаем контактные блоки к правому краю */
+    align-items: center;
+    gap: 30px;
+    /* Равномерный промежуток между элементами */
+    font-size: 14px;
+}
+
+.sector-phone,
+.sector-adress,
+.sector-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Шапка прилипает к верхнему краю экрана при прокрутке и держится над остальным контентом (z-index: 100) */
+header {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+}
+
+.header__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+    margin-left: auto;
+    margin-right: 40px;
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    /* Убираем стандартные маркеры списка */
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--color-dark-blue);
+    font-weight: 500;
+    transition: color 0.4s ease;
+    /* Плавная смена цвета при наведении */
+}
+
+.nav__link:hover {
+    color: var(--color-blue);
+}
+
+/* Подсветка активного пункта меню и нижнее подчёркивание через псевдоэлемент ::after */
+.nav__link--active {
+    color: var(--color-blue);
+    position: relative;
+    /* Делает элемент точкой отсчёта для дочерних элементов с position: absolute / ::after и позволяет при необходимости двигать его через z-index или top/left */
+}
+
+.nav__link--active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-blue);
+}
+
+.header__actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.action-btn,
+.search-btn {
+    background: transparent;
+    border: 2px solid #204362;
+    border-radius: 4px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+.action-btn:hover,
+.search-btn:hover {
+    border-color: var(--color-blue);
+    background: var(--color-gary);
+}
+
+/* object-fit: contain сохраняет пропорции иконки внутри заданного квадрата */
+.action-btn img,
+.search-btn img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+/* На десктопе кнопка бургера и мобильное меню скрыты */
+.burger-btn,
+.mobile-menu {
+    display: none;
+}
+
+/* Первый экран (Hero) с фоновым узором */
+.hero {
+    background: url(../img/pattern.svg);
+    background-size: cover;
+    /* Масштабирует фон так, чтобы он покрыл всю область секции */
+    color: #ffffff;
+    position: relative;
+}
+
+.hero__container {
+    margin: 0 auto;
+    background: var(--color-gary);
+}
+
+.breadcrumbs {
+    font-size: 16px;
+    color: #A3A2A2;
+    margin-bottom: 40px;
+    padding: 5px 40px;
+}
+
+/* Задаём серый цвет ссылкам (включая посещённые :visited) */
+.breadcrumbs a,
+.breadcrumbs a:visited {
+    color: #A3A2A2;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--color-dark-blue);
+}
+
+/* Перебиваем стандартный красный цвет при нажатии (:active) */
+.breadcrumbs a:active {
+    color: var(--color-blue);
+}
+
+.hero__content {
+    max-width: 1440px;
+}
+
+.hero__title {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.15;
+    padding: 10px;
+}
+
+.hero__description {
+    font-size: 24px;
+    line-height: 1.5;
+    /* Задаёт высоту строки в 1.5 раза больше текущего размера шрифта: добавляет «воздух» между строками, чтобы текст легче читался */
+    padding: 50px 0 60px 10px;
+}
+
+/* Полупрозрачная тёмная плашка внизу Hero поверх фонового узора */
+.hero__bottom-bar {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 25px 0;
+}
+
+.hero__bottom-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.course-info__label {
+    color: white;
+}
+
+.course-info__value {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
+
+.cta-button {
+    background-color: var(--color-dark-blue);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 16px 45px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    /* Плавная анимация смены свойств за 0.2с для фона и 0.1с для трансформации; ease — плавный разгон и торможение */
+}
+
+.cta-button:hover {
+    background-color: var(--color-blue);
+}
+
+/* Лёгкое нажатие кнопки при клике */
+.cta-button:active {
+    transform: scale(0.98);
+}
+
+.about-course {
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+
+/* Большая серая карточка с описанием программы */
+.about-card {
+    background-color: var(--color-gary);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+/* Левая часть с круглой иконкой */
+/* Применяем анимацию к картинке в карточке «О курсе» */
+.about-card__image img {
+    height: 250px;
+    /* animation: имя, длительность, плавность, бесконечный повтор */
+    animation: float-icon 3.5s ease-in-out infinite;
+}
+
+/* Правая часть с текстом */
+.about-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    line-height: 1.6;
+    color: var(--color-dark-blue);
+}
+
+.about-card__text strong {
+    font-weight: 700;
+}
+
+/* Описываем ключевые кадры (шаги анимации) с именем float-icon */
+@keyframes float-icon {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px); /* Слегка приподнимаем иконку в середине цикла */
+    }
+}
+
+/* Общий стиль крупных заголовков секций */
+.section-title {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--color-dark-blue);
+    margin-bottom: 40px;
+}
+
+/* Сетка карточек с навыками: 3 равные колонки (1fr каждая) */
+.skills__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Отдельная карточка навыка */
+.skill-card {
+    background-color: var(--color-gary);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 160px;
+}
+
+/* Синий блок с порядковым номером навыка */
+.skill-card__number {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-blue);
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 700;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    animation: badge-pulse 2.6s ease-out infinite;
+}
+
+.skill-card__text {
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--color-dark-blue);
+    margin: 0;
+}
+
+/* Плавное пульсирующее свечение рамки вокруг синего номера навыка */
+@keyframes badge-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(29, 113, 184, 0.35);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(29, 113, 184, 0);
+    }
+}
+
+.program {
+    padding: 60px 0;
+}
+
+.program__title {
+    line-height: 1.15;
+    margin-bottom: 32px;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.accordion__item {
+    border-bottom: 1px solid #d9dfe6;
+    padding-bottom: 24px;
+}
+
+.accordion__header {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.accordion__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-dark-blue);
+}
+
+/* Квадратная кнопка со стрелкой справа; поворачивается через transform */
+.accordion__arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: var(--color-gary);
+    color: var(--color-dark-blue);
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    /* Не даёт кнопке сжиматься при длинном заголовке */
+    transform: rotate(180deg);
+    transition: transform 0.25s ease, background-color 0.2s ease;
+}
+
+.accordion__header:hover .accordion__arrow {
+    background-color: #dfe5ec;
+}
+
+/* Плавное раскрытие/сворачивание без фиксированной высоты: grid-template-rows меняется с 0fr (схлопнуто) на 1fr (полная высота содержимого) */
+.accordion__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+}
+
+.accordion__item--open .accordion__body {
+    grid-template-rows: 1fr;
+}
+
+/* overflow: hidden обязателен вместе с 0fr, чтобы скрытый текст не вылезал */
+.accordion__content {
+    overflow: hidden;
+}
+
+.accordion__lead {
+    margin: 14px 0 12px;
+    color: var(--color-dark-blue);
+}
+
+.accordion__list {
+    margin: 0;
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    line-height: 1.5;
+    color: var(--color-dark-blue);
+}
+
+/* Когда блок закрыт, возвращаем стрелку в исходное положение */
+.accordion__item:not(.accordion__item--open) .accordion__arrow {
+    transform: rotate(0deg);
+}
+
+.teachers {
+    padding: 60px 0 80px;
+}
+
+.teachers__title {
+    margin-bottom: 40px;
+}
+
+/* Сетка на 4 колонки */
+.teachers__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px 36px;
+    align-items: start;
+}
+
+/* aspect-ratio задаёт пропорцию рамки фото (ширина к высоте), чтобы все фото были одинакового формата */
+.teacher-card__photo {
+    width: 100%;
+    aspect-ratio: 4 / 4.5;
+    background-color: var(--color-gary);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+/* object-fit: cover заполняет рамку фото без искажения пропорций лица */
+.teacher-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Делает элемент блочным например, картинку <img>, которая по умолчанию строчная, он занимает всю доступную ширину и корректно работает с вертикальными отступами */
+}
+
+.teacher-card__name {
+    margin: 0 0 4px;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-dark-blue);
+}
+
+.teacher-card__role {
+    margin: 0;
+    line-height: 1.35;
+    color: var(--color-dark-blue);
+}
+
+/* Ручная расстановка карточек по сетке 4x2: боковые карточки растянуты на 2 строки (1 / span 2) и выровнены по центру по вертикали */
+.teacher-card--left {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: center;
+}
+
+.teacher-card--top-mid-1 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.teacher-card--top-mid-2 {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.teacher-card--bottom-mid-1 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.teacher-card--bottom-mid-2 {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.teacher-card--right {
+    grid-column: 4;
+    grid-row: 1 / span 2;
+    align-self: center;
+}
+
+.project-work {
+    padding: 60px 0 80px;
+}
+
+/* Заголовок секции остаётся в общей ширине, а сетка плашек сужается ниже */
+.project-work__container {
+    max-width: 1440px;
+}
+
+.project-work__title {
+    line-height: 1.2;
+    margin-bottom: 36px;
+}
+
+.project-work__subtitle {
+    margin: 0 0 28px;
+    text-align: center;
+    font-size: 64px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-dark-blue);
+}
+
+/* Сужаем блок с плашками до 900px и центрируем через margin: 0 auto */
+.project-work__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 32px;
+    align-items: start;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* 1 / -1 растягивает плашку от первой до последней линии колонок сетки */
+.project-badge--full {
+    grid-column: 1 / -1;
+}
+
+.project-work__col {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* Синие плашки с тезисами */
+.project-badge {
+    background-color: var(--color-blue);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 18px 24px;
+    line-height: 1.4;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.project-badge--tall {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* scroll-margin-top добавляет отступ сверху при прокрутке к #application-form, чтобы верх карточки не заезжал под фиксированную шапку */
+.application {
+    padding: 40px 0 80px;
+    scroll-margin-top: 70px;
+}
+
+.application__card {
+    position: relative;
+    overflow: hidden;
+    /* Обрезает декоративный слой по скруглённым углам карточки */
+    background-color: var(--color-purple);
+    border-radius: 16px;
+    padding: 48px 56px;
+    color: #ffffff;
+}
+
+/* Декоративный псевдоэлемент ::after выводит фоновый узор в правой части карточки */
+.application__card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 46%;
+    /* Ширина правой части под узор */
+    height: 100%;
+    background-image: url(../img/pattern.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* Заполняет правую часть без сплющивания */
+    pointer-events: none;
+    /* Не перехватывает клики мыши */
+}
+
+/* Поднимаем форму над фоном и псевдоэлементом через position: relative + z-index */
+.application__content {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+}
+
+.application__title {
+    margin: 0 0 28px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #ffffff;
+}
+
+.application__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Поля ввода со скруглёнными краями, а border-radius: 999px создаёт форму пилюли */
+.application__input {
+    width: 100%;
+    height: 58px;
+    padding: 0 26px;
+    border: none;
+    border-radius: 999px;
+    background-color: #ffffff;
+    font-size: 20px;
+    color: var(--color-dark-blue);
+    box-sizing: border-box;
+    outline: none;
+}
+
+.application__input::placeholder {
+    color: #A3A2A2;
+}
+
+.application__input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+/* Кастомные чекбоксы: стандартный <input type="checkbox"> скрывается, а вместо него стилизуется .custom-checkbox__box и галочка через ::after */
+.custom-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.custom-checkbox__box {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+/* Рисуем галочку из двух границ рамки, повёрнутых на 45 градусов */
+.custom-checkbox input:checked+.custom-checkbox__box::after {
+    content: "";
+    width: 6px;
+    height: 11px;
+    border: solid #ffffff;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+    margin-bottom: 2px;
+}
+
+.custom-checkbox__text {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #ffffff;
+}
+
+.custom-checkbox__text a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Кнопки под формой */
+.application__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 14px;
+    max-width: 400px;
+}
+
+.application__btn {
+    height: 50px;
+    border-radius: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.application__btn:hover {
+    opacity: 0.92;
+}
+
+.application__btn:active {
+    transform: scale(0.99);
+}
+
+.application__btn--submit {
+    background-color: #1c4463;
+    color: #ffffff;
+}
+
+.application__btn--info {
+    background-color: #5b97d3;
+    color: #ffffff;
+}
+
+.footer {
+    color: #ffffff;
+}
+
+/* Верхняя тёмно-синяя часть подвала */
+.footer__top {
+    background-color: var(--color-dark-blue);
+    padding: 56px 0 64px;
+}
+
+.footer__top-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.footer__logo img {
+    display: block;
+    max-width: 240px;
+    height: auto;
+}
+
+.footer__heading {
+    margin: 0 0 22px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+/* Список меню с тонкими разделителями */
+.footer__menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer__menu-item {
+    border-bottom: 1px solid #525969;
+}
+
+.footer__menu-item:last-child {
+    border-bottom: none;
+}
+
+.footer__menu-item a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 0;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Декоративная стрелка перед пунктом меню подвала */
+.footer__menu-item a::before {
+    content: "›";
+    font-size: 24px;
+    line-height: 1;
+    color: #E4B330;
+}
+
+.footer__menu-item a:hover {
+    color: var(--color-blue);
+    transform: translateX(4px);
+}
+
+/* Контакты */
+.footer__address {
+    margin: 0 0 18px;
+    font-size: 16px;
+    line-height: 1.55;
+    color: #ffffff;
+}
+
+.footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer__phone {
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+
+.footer__phone:hover {
+    color: #8ab4e0;
+    text-decoration: underline;
+}
+
+.footer__email {
+    font-size: 16px;
+    color: #ffffff;
+    /* Приглушённый оттенок, как на макете */
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+
+.footer__email:hover {
+    color: #8ab4e0;
+    text-decoration: underline;
+}
+
+/* Нижняя синяя полоса подвала */
+.footer__bottom {
+    background-color: var(--color-blue);
+    padding: 18px 0;
+}
+
+.footer__bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.footer__copyright-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.footer__bottom-icon {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.footer__copyright {
+    margin: 0;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.footer__bottom-right {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.footer__bottom-nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.footer__bottom-nav a {
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.footer__bottom-nav a:hover {
+    text-decoration: underline;
+}
+
+.footer__eye-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+}
+
+.footer__eye-link:hover {
+    opacity: 0.8;
+}
+
+/* filter: brightness(0) invert(1) делает тёмную иконку чисто белой на синем фоне */
+.footer__eye-link img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+/* Фиксированная кнопка прокрутки вверх в правом нижнем углу экрана */
+.scroll-top {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    z-index: 90;
+    /* Ниже шапки (100), но поверх основного контента */
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-blue);
+    color: #ffffff;
+    font-size: 26px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    transition: background-color 0.25s ease, transform 0.2s ease, opacity 0.25s ease, visibility 0.25s ease;
+    animation: badge-pulse 2.6s ease-out infinite;
+}
+
+.scroll-top:hover {
+    background-color: var(--color-dark-blue);
+    transform: translateY(-3px);
+}
+
+.scroll-top:active {
+    transform: translateY(0) scale(0.96);
+}
+
+/* :focus-visible показывает обводку при навигации с клавиатуры (Tab), не мешая кликам мышкой */
+a:focus-visible,
+button:focus-visible,
+.accordion__header:focus-visible {
+    outline: 3px solid var(--color-blue);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Подсвечиваем видимый квадрат кастомного чекбокса при фокусе на скрытом input */
+.custom-checkbox input:focus-visible+.custom-checkbox__box {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+/* На тёмном и синем фоне подвала лучше светлая/контрастная рамка, чтобы не терялась */
+.footer a:focus-visible,
+.scroll-top:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+.application a:focus-visible,
+.application button:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* Плавное появление секций при прокрутке: класс .reveal-on-scroll добавляется из main.js, а .is-visible вешается, когда секция попадает в поле зрения */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Планшеты и небольшие экраны (ширина экрана до 1024px включительно) */
+@media (max-width: 1024px) {
+    /* Уменьшаем боковые отступы верхней полосы и разрешаем перенос элементов на новую строку, чтобы контакты не сжимались в тесную линию */
+    .top-bar__info-sector {
+        padding: 8px 20px;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .nav,
+    .header__actions {
+        display: none;
+    }
+
+    /* Показываем синюю кнопку из трёх полосок справа */
+    .burger-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 38px;
+        height: 28px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Сами три синие полосочки */
+    .burger-btn span {
+        display: block;
+        width: 100%;
+        height: 4px;
+        background-color: var(--color-blue);
+        border-radius: 4px;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    /* При открытом меню (.is-open) сдвигаем и поворачиваем верхнюю и нижнюю полоски в крестик, а среднюю скрываем */
+    .burger-btn.is-open span:nth-child(1) {
+        transform: translateY(12px) rotate(45deg);
+    }
+
+    .burger-btn.is-open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-btn.is-open span:nth-child(3) {
+        transform: translateY(-12px) rotate(-45deg);
+    }
+
+    /* Выпадающий блок под шапкой; отображается только когда добавлен класс .is-open из JS */
+    .mobile-menu.is-open {
+        display: block;
+        background-color: #f3f4f6;
+        border-top: 1px solid #e2e5ea;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .mobile-menu__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobile-menu__link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 24px;
+        font-size: 16px;
+        letter-spacing: 0.03em; /* Немного увеличивает расстояние между буквами (на 0.03 размера текущего шрифта),чтобы заглавные буквы или заголовки читались свободнее */
+        text-transform: uppercase;
+        color: var(--color-dark-blue);
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .mobile-menu__link span {
+        font-size: 22px;
+        color: #9ca3af;
+    }
+
+    .mobile-menu__link:hover,
+    .mobile-menu__link--active {
+        color: var(--color-blue);
+        background-color: #eceef2;
+    }
+
+    /* Строка с иконкой глаза */
+    .mobile-menu__accessibility {
+        padding: 16px 24px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .mobile-menu__eye {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .mobile-menu__eye img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
+
+    /* Строка поиска внизу выпадающего списка */
+    .mobile-menu__search {
+        display: flex;
+        align-items: stretch; /* Растягивает дочерние элементы поперёк оси контейнера (в flex/grid) на всю доступную высоту или ширину строки */
+        background-color: #ffffff;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .mobile-menu__search-input {
+        flex: 1; /* flex: 1 растягивает поле ввода на всю доступную ширину рядом с кнопкой поиска */
+        border: none;
+        padding: 14px 18px;
+        font-size: 16px;
+        color: var(--color-dark-blue);
+        background: transparent; /* Делает фон элемента полностью прозрачным, чтобы просвечивал фон родителя */
+        outline: none;
+    }
+
+    .mobile-menu__search-btn {
+        width: 56px;
+        border: none;
+        background-color: var(--color-blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .mobile-menu__search-btn img {
+        width: 22px;
+        height: 22px;
+        filter: brightness(0) invert(1);
+    }
+
+    /* .header__container {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    nav {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .nav__list {
+        gap: 20px;
+        flex-wrap: wrap;
+    } */
+
+    .section-title,
+    .hero__title {
+        font-size: 42px;
+    }
+
+    .hero__description {
+        font-size: 20px;
+        padding: 32px 0 40px 10px;
+    }
+
+    .hero__bottom-container {
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    /* Навыки перестраиваем с 3 колонок на 2 */
+    .skills__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* На планшете упрощаем сетку преподавателей до 2 колонок */
+    .teachers__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Сбрасываем ручную привязку к строкам/колонкам десктопной сетки 4x2, чтобы карточки встали в обычный поток из 2 колонок */
+    .teacher-card--left,
+    .teacher-card--top-mid-1,
+    .teacher-card--top-mid-2,
+    .teacher-card--bottom-mid-1,
+    .teacher-card--bottom-mid-2,
+    .teacher-card--right {
+        grid-column: auto;
+        grid-row: auto;
+        align-self: stretch;
+    }
+
+    /* Верх подвала делим на 2 колонки вместо 3 */
+    .footer__top-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* На планшетах скрываем правую навигацию в нижней полосе подвала, чтобы не было тесноты */
+    .footer__bottom-right {
+        display: none;
+    }
+}
+
+/* Мобильные устройства (ширина экрана до 767px включительно) */
+@media (max-width: 767px) {
+    /* Делаем более компактные боковые отступы для узких экранов */
+    .container {
+        padding: 0 16px;
+    }
+
+    .section-title,
+    .hero__title {
+        font-size: 32px;
+    }
+
+    .project-work__subtitle {
+        font-size: 30px;
+    }
+
+    /* Карточку «О курсе» ставим вертикально: иконка сверху, текст ниже */
+    .about-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .about-card__image img {
+        height: 160px;
+    }
+
+    /* Все многоколоночные сетки и верх подвала переводим в одну колонку (1fr) */
+    .skills__grid,
+    .teachers__grid,
+    .project-work__grid,
+    .footer__top-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .application__card {
+        padding: 28px 20px;
+    }
+
+    /* На мобилках убираем боковой паттерн, чтобы он не мешал читаемости формы */
+    .application__card::after {
+        display: none;
+    }
+
+    .application__title {
+        font-size: 26px;
+    }
+
+    /* Нижнюю полосу подвала выстраиваем в колонку по левому краю */
+    .footer__bottom-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Чуть уменьшаем плавающую кнопку «наверх» и придвигаем ближе к краю экрана */
+    .scroll-top {
+        right: 16px;
+        bottom: 16px;
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+    }
+}
