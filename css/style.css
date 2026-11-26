@@ -311,11 +311,15 @@ nav {
 
 /* Описываем ключевые кадры (шаги анимации) с именем float-icon */
 @keyframes float-icon {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
-        transform: translateY(-8px); /* Слегка приподнимаем иконку в середине цикла */
+        transform: translateY(-8px);
+        /* Слегка приподнимаем иконку в середине цикла */
     }
 }
 
@@ -371,9 +375,12 @@ nav {
 
 /* Плавное пульсирующее свечение рамки вокруг синего номера навыка */
 @keyframes badge-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 0 0 rgba(29, 113, 184, 0.35);
     }
+
     50% {
         box-shadow: 0 0 0 8px rgba(29, 113, 184, 0);
     }
@@ -1049,6 +1056,7 @@ button:focus-visible,
 
 /* Планшеты и небольшие экраны (ширина экрана до 1024px включительно) */
 @media (max-width: 1024px) {
+
     /* Уменьшаем боковые отступы верхней полосы и разрешаем перенос элементов на новую строку, чтобы контакты не сжимались в тесную линию */
     .top-bar__info-sector {
         padding: 8px 20px;
@@ -1118,7 +1126,8 @@ button:focus-visible,
         justify-content: space-between;
         padding: 18px 24px;
         font-size: 16px;
-        letter-spacing: 0.03em; /* Немного увеличивает расстояние между буквами (на 0.03 размера текущего шрифта),чтобы заглавные буквы или заголовки читались свободнее */
+        letter-spacing: 0.03em;
+        /* Немного увеличивает расстояние между буквами (на 0.03 размера текущего шрифта),чтобы заглавные буквы или заголовки читались свободнее */
         text-transform: uppercase;
         color: var(--color-dark-blue);
         border-bottom: 1px solid #e5e7eb;
@@ -1155,18 +1164,21 @@ button:focus-visible,
     /* Строка поиска внизу выпадающего списка */
     .mobile-menu__search {
         display: flex;
-        align-items: stretch; /* Растягивает дочерние элементы поперёк оси контейнера (в flex/grid) на всю доступную высоту или ширину строки */
+        align-items: stretch;
+        /* Растягивает дочерние элементы поперёк оси контейнера (в flex/grid) на всю доступную высоту или ширину строки */
         background-color: #ffffff;
         border-top: 1px solid #e5e7eb;
     }
 
     .mobile-menu__search-input {
-        flex: 1; /* flex: 1 растягивает поле ввода на всю доступную ширину рядом с кнопкой поиска */
+        flex: 1;
+        /* flex: 1 растягивает поле ввода на всю доступную ширину рядом с кнопкой поиска */
         border: none;
         padding: 14px 18px;
         font-size: 16px;
         color: var(--color-dark-blue);
-        background: transparent; /* Делает фон элемента полностью прозрачным, чтобы просвечивал фон родителя */
+        background: transparent;
+        /* Делает фон элемента полностью прозрачным, чтобы просвечивал фон родителя */
         outline: none;
     }
 
@@ -1185,22 +1197,6 @@ button:focus-visible,
         height: 22px;
         filter: brightness(0) invert(1);
     }
-
-    /* .header__container {
-        padding: 15px 20px;
-        flex-wrap: wrap;
-        gap: 16px;
-    }
-
-    nav {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .nav__list {
-        gap: 20px;
-        flex-wrap: wrap;
-    } */
 
     .section-title,
     .hero__title {
@@ -1253,6 +1249,7 @@ button:focus-visible,
 
 /* Мобильные устройства (ширина экрана до 767px включительно) */
 @media (max-width: 767px) {
+
     /* Делаем более компактные боковые отступы для узких экранов */
     .container {
         padding: 0 16px;
